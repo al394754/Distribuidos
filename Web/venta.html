@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>SubastasUjI</title>
+    <link rel="stylesheet" href="estilo.css">
+    
+</head>
+
+<body>
+     <a href="principal.html"><img src="mazo.jpg"></a>
+    <h1> <b>Pon a la venta tu artículo</b> </h1>
+   
+
+   <form>
+		<label for="cuenta">Cuenta: </label>
+		<input type="radio" id="estandar" name="tipo_cuenta" value="Estándar" required>		<!Required índica que un campo debe ser rellenado>
+		<label class="radioInput" for="estandar">Estándar</label>
+		<input type="radio" id="premium" name="tipo_cuenta" value="Premium">				<!Como ambos botones y cuenta comparten nombre, required es capaz de funcionar en este campo>
+		<label class="radioInput" for="premium">Premium</label>	
+		
+		<br>
+		
+		<label for="codcli">Código de cliente: </label>
+		<input type="text" id="codcli" size="15" maxlength="8" required>						<!Size determina el tamaño del campo, maxlength determina la cantidad máxima de caracteres permitidos>
+		
+		<br>
+		
+		<label for="tipo">Tipo: </label>
+		<select id="tipo" size="1">
+			<option value="LibrosComics">Libros y cómics</option>							<!Muestra un listado con todas las posibles opciones para elegir. size indica cuantas opciones son visibles antes de acceder al campo>
+			<option value="ElectronicaInformatica">Electrónica e Informática</option>
+			<option value="complementos">Complementos</option>
+			<option value="otros">Otros</option>
+		</select>
+		
+		<br>
+		
+		<label for="descripcion">Descripción: </label>
+		<input type="text" id="descripcion" size="40" maxlength="40" required>
+		
+		<br>
+		
+		<label for="precio">Precio: </label>
+		<input type="number" id="precio" min="0" required>
+	  
+		<br>
+		
+		<input type="submit" value="Pon en venta" class="centrarBoton">
+	</form>
+    
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="censoEstilo.css">
+</head>
+
+
+<body>
+<h1>Datos Censales</h1>
+<br>
+<form>
+	<table>
+		<tr>
+			<td>
+				<a href="http://www.censo.es"><label for="DNI">DNI:</label></a>
+				<input type="Text" name="DNI" required>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="Edad">Edad:</label>
+				<input type="radio" name="Edad" value="Hombre" required>
+				<label class="raioInput" for="Hombre">Hombre</label>
+				<input type="radio" name="Edad" value="Mujer">
+				<label class="radioInput" for="Mujer">Mujer</label>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<br>
+				<input type="submit" name="Enviar" value="Enviar">
+				<input type="submit" name="Borrar" value="Borrar">
+			</td>
+		</tr>
+		
+	</table>
+</form>
+</body>
+
+</html>
