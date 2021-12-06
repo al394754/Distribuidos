@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>puja</title>
+</head>
+<body>
+<h1>Formulario de puja</h1>
+<form action="ServletPuja" method="POST">
+	<table>
+		<tr>
+			<th>Código del artículo:</th>
+				<td><input type="text" name="codart" required></td>
+		</tr>
+		<tr>
+			<th>Puja:</th>
+				<td><input type="number" name="puja" min="0" required></td>
+		</tr>			
+	</table>
+	<input type="submit" value="Pujar">
+</form>
+</body>
+</html>

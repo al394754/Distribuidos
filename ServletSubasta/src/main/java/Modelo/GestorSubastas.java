@@ -243,7 +243,7 @@ public class GestorSubastas {
 			articulo.setPuja(puja);
 			articulo.setCodcli(articulo.rightPad(codcli, 8));
 			articulo.escribeEnFichero(stream);
-			return "El artículo " + codart + " se ha pujado por valor de " + puja + " euros, por el cliente " + codcli;
+			return articulo.toString();
 		}
 		
 		return null;
@@ -281,7 +281,8 @@ public class GestorSubastas {
 			articulo.setVendido(true);
 			stream.seek(puntero);
 			articulo.escribeEnFichero(stream);	//Modificamos el campo de vendido de false a true
-			return "El articulo " + codart + " ha sido vendido al cliente " + articulo.getCodcli(); 
+			//return "El articulo " + codart + " ha sido vendido al cliente " + articulo.getCodcli(); 
+			return articulo.toString();
 		}return null;
 		
 		

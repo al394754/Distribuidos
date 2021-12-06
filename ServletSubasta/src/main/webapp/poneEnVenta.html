@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>poneEnVenta</title>
+</head>
+<body>
+<form action="ServletPoneEnVenta" method="POST">
+	<table>
+		<tr>
+			<th>Tipo:</th>
+				<td><select id=tipo name=tipo size="1" required>
+					<option value="LI">Libros y Cómics</option>							<!Muestra un listado con todas las posibles opciones para elegir. size indica cuantas opciones son visibles antes de acceder al campo>
+					<option value="EL">Electrónica e Informática</option>
+					<option value="RO">Ropa y complementos</option>
+					<option value="OT">Otros</option>
+				</select></td>			
+		</tr>
+		<tr>
+			<th>Descripcion:</th>
+				<td><input type="text" name="descr" required></td>
+		</tr>
+		<tr>
+			<th>Precio:</th>
+				<td><input type="number" name="precio" min="0" required></td>
+		</tr>
+	</table>
+	<br>
+	<input type="submit" value="Pon en venta">
+</form>
+</body>
+</html>

@@ -12,37 +12,45 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Modelo.GestorSubastas;
-
 /**
- * Servlet implementation class ServletPoneEnVenta
+ * Servlet implementation class ServletPuja
  */
-@WebServlet("/ServletPoneEnVenta")
-public class ServletPoneEnVenta extends HttpServlet {
+@WebServlet("/ServletPuja")
+public class ServletPuja extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletPoneEnVenta() {
+    public ServletPuja() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		ServletContext contexto = getServletContext();
 		GestorSubastas gestor = (GestorSubastas) contexto.getAttribute("gestor");
 		String cliente = (String) contexto.getAttribute("codcli");
-		String tipo = (String) request.getParameter("tipo");
-		String descr = (String) request.getParameter("descr");
-		int precio = Integer.parseInt(request.getParameter("precio"));
-		String respuesta = gestor.poneEnVenta(cliente, tipo, descr, precio);
-		request.setAttribute("codcli", cliente);
-		request.setAttribute("venta", respuesta);
-		RequestDispatcher vista = request.getRequestDispatcher("poneEnVenta.jsp");
+		String codart = (String) request.getParameter("codart");
+		int puja = Integer.parseInt(request.getParameter("puja"));
+		String respuesta = gestor.puja(cliente, codart, puja);
+		if(respuesta == null) {
+			respuesta = "";
+		}
+		else {
+			String[] articulo = respuesta.split("#");
+			request.setAttribute("codart", codart);
+			request.setAttribute("descr", articulo[2]);
+			request.setAttribute("puja", puja);
+			request.setAttribute("pujador", cliente);
+			request.setAttribute("vendedor", articulo[3]);
+		}
+		request.setAttribute("operacionRealizada", respuesta);
+		RequestDispatcher vista = request.getRequestDispatcher("puja.jsp");
 		vista.forward(request, response);
 	}
 
