@@ -5,6 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>venta</title>
+<link rel="stylesheet" href="subasta.css">
 </head>
 <body>
 <h2>Resultado de la venta</h2>
@@ -28,6 +29,6 @@
 		<li>Valor de la puja máxima: <%=puja %></li>
 	</ul>
 	<% }%>
-	<a href="Menu.jsp">Menú</a>
+	<a class="menu" href="Menu.jsp">Menú</a>
 </body>
 </html>

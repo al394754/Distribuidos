@@ -5,6 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>poneEnVenta</title>
+<link rel="stylesheet" href="subasta.css">
 </head>
 <body>
 <h2>Resultado de la puesta en venta</h2>
@@ -20,6 +21,7 @@
 			<li>Precio de salida: <%=puja[5] %></li>
 		</ul>
 	<%}%>
-	<a href="Menu.jsp">Menú</a>
+	<br>
+	<a class="menu" href="Menu.jsp">Menú</a>
 </body>
 </html>

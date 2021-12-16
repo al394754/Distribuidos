@@ -3,23 +3,26 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>consultaTipo</title>
-<link rel="stylesheet">
+<link rel="stylesheet" href="subasta.css">
 </head>
 <body>
-<h1>Formulario de consulta de tipo</h1>
-<h2>Selecciona uno de los tipos de artículo:</h2>
+<h1 class="sinColor">Formulario de consulta de tipo</h1>
+<h3>Selecciona uno de los tipos de artículo:</h3>
 <form action="ServletConsultaTipo" method="GET">
-	<label for="tipo">Selecciona uno de los tipos de artículo:</label>
+	<label for="tipo"></label>
 	<input type="radio" id="LI" name="tipo" value="LI" required>
 	<label for="LI">Libros y Cómics</label>
+	<br>
 	<input type="radio" id="EL" name="tipo" value="EL">
 	<label for="EL">Electrónica e Informática</label>
+	<br>
 	<input type="radio" id="RO" name="tipo" value="RO">
 	<label for="RO">Ropa y complementos</label>
+	<br>
 	<input type="radio" id="OT" name="tipo" value="OT">
 	<label for="OT">Otros</label>
 	<br>
-	<input type="submit" value="submit">
+	<input class="inputCentrado" type="submit" value="submit">
 </form>
 </body>
 </html>

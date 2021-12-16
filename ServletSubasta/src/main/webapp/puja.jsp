@@ -5,6 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>puja</title>
+<link rel="stylesheet" href="subasta.css">
 </head>
 <body>
 <h2>Resultado de la venta</h2>
@@ -19,9 +20,7 @@
 		String vendedor = (String) request.getAttribute("vendedor");
 		Integer puja = (Integer) request.getAttribute("puja");
 	%><h2>Enhorabuena. Tu puja es la máxima actualmente.</h2>
-	<br/>
 	<h2>El artículo <%=codart %> tiene el siguiente estado:</h2>
-	<br/>
 	<ul>
 		<li>Código del artículo: <%=codart %></li>
 		<li>Descripción del artículo: <%=descr %></li>
@@ -30,6 +29,7 @@
 		<li>Valor de la puja máxima: <%=puja %></li>
 	</ul>
 	<% }%>
-	<a href="Menu.jsp">Menú</a>
+	<br>
+	<a class="menu" href="Menu.jsp">Menú</a>
 </body>
 </html>

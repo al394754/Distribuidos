@@ -35,11 +35,32 @@ public class ServletConsultaTipo extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		ServletContext contexto = getServletContext();
-		GestorSubastas gestor = (GestorSubastas) contexto.getAttribute("gestor");
-		Vector<String> respuesta = gestor.consultaTipo(request.getParameter("tipo"));
-		request.setAttribute("articulosDeUnTipo", respuesta);
-		RequestDispatcher vista = request.getRequestDispatcher("consultaTipo.jsp");
-		vista.forward(request, response);
+		String cliente = (String) contexto.getAttribute("codcli");
+		if(cliente == null) {
+			RequestDispatcher vista = request.getRequestDispatcher("index.html");
+			vista.forward(request, response);
+		}else {
+			GestorSubastas gestor = (GestorSubastas) contexto.getAttribute("gestor");
+			String tipo = (String) request.getParameter("tipo");
+			Vector<String> respuesta = gestor.consultaTipo(tipo);
+			switch(tipo) {
+				case("LI"):
+					request.setAttribute("tipo", "Libros y cómics");
+					break;
+				case("EL"):
+					request.setAttribute("tipo", "Electrónica e Informática");
+					break;
+				case("RO"):
+					request.setAttribute("tipo", "Ropa y complementos");
+					break;
+				case("OT"):
+					request.setAttribute("tipo", "Otros");
+					break;
+			}
+			request.setAttribute("articulosDeUnTipo", respuesta);
+			RequestDispatcher vista = request.getRequestDispatcher("consultaTipo.jsp");
+			vista.forward(request, response);
+		}
 	}
 
 }

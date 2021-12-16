@@ -44,22 +44,26 @@ public class ServletVenta extends HttpServlet {
 		ServletContext contexto = getServletContext();
 		GestorSubastas gestor = (GestorSubastas) contexto.getAttribute("gestor");
 		String cliente = (String) contexto.getAttribute("codcli");
-		String codart = (String) request.getParameter("codart");
-		String respuesta = gestor.vende(cliente, codart);
-		if(respuesta == null) {
-			respuesta = "";
+		if(cliente == null) {
+			RequestDispatcher vista = request.getRequestDispatcher("index.html");
+			vista.forward(request, response);
+		}else {
+			String codart = (String) request.getParameter("codart");
+			String respuesta = gestor.vende(cliente, codart);
+			if(respuesta == null) {
+				respuesta = "";
+			}
+			else {
+				String[] articulo = respuesta.split("#");
+				request.setAttribute("codart", codart);
+				request.setAttribute("descr", articulo[2]);
+				int puja = Integer.parseInt(articulo[5]);
+				request.setAttribute("puja", puja);
+				request.setAttribute("pujador", articulo[4]);
+			}
+			request.setAttribute("operacionRealizada", respuesta);
+			RequestDispatcher vista = request.getRequestDispatcher("venta.jsp");
+			vista.forward(request, response);
 		}
-		else {
-			String[] articulo = respuesta.split("#");
-			request.setAttribute("codart", codart);
-			request.setAttribute("descr", articulo[2]);
-			int puja = Integer.parseInt(articulo[5]);
-			request.setAttribute("puja", puja);
-			request.setAttribute("pujador", articulo[4]);
-		}
-		request.setAttribute("operacionRealizada", respuesta);
-		RequestDispatcher vista = request.getRequestDispatcher("venta.jsp");
-		vista.forward(request, response);
-}
-
+	}
 }

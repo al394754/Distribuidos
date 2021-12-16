@@ -3,13 +3,15 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>poneEnVenta</title>
+<link rel="stylesheet" href="subasta.css">
 </head>
 <body>
 <form action="ServletPoneEnVenta" method="POST">
+	<h1 class="sinColor">Formulario de puesta en venta</h1>
 	<table>
 		<tr>
 			<th>Tipo:</th>
-				<td><select id=tipo name=tipo size="1" required>
+				<td><select id="tipo" name="tipo" size="1" required>
 					<option value="LI">Libros y Cómics</option>							<!Muestra un listado con todas las posibles opciones para elegir. size indica cuantas opciones son visibles antes de acceder al campo>
 					<option value="EL">Electrónica e Informática</option>
 					<option value="RO">Ropa y complementos</option>
@@ -17,8 +19,8 @@
 				</select></td>			
 		</tr>
 		<tr>
-			<th>Descripcion:</th>
-				<td><input type="text" name="descr" required></td>
+			<th>Descripción:</th>
+				<td><input type="text" name="descr" size="40" required></td>
 		</tr>
 		<tr>
 			<th>Precio:</th>
@@ -26,7 +28,7 @@
 		</tr>
 	</table>
 	<br>
-	<input type="submit" value="Pon en venta">
+	<input class="inputCentrado" type="submit" value="Pon en venta">
 </form>
 </body>
 </html>

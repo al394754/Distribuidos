@@ -36,14 +36,19 @@ public class ServletPoneEnVenta extends HttpServlet {
 		ServletContext contexto = getServletContext();
 		GestorSubastas gestor = (GestorSubastas) contexto.getAttribute("gestor");
 		String cliente = (String) contexto.getAttribute("codcli");
-		String tipo = (String) request.getParameter("tipo");
-		String descr = (String) request.getParameter("descr");
-		int precio = Integer.parseInt(request.getParameter("precio"));
-		String respuesta = gestor.poneEnVenta(cliente, tipo, descr, precio);
-		request.setAttribute("codcli", cliente);
-		request.setAttribute("venta", respuesta);
-		RequestDispatcher vista = request.getRequestDispatcher("poneEnVenta.jsp");
-		vista.forward(request, response);
+		if(cliente == null) {
+			RequestDispatcher vista = request.getRequestDispatcher("index.html");
+			vista.forward(request, response);
+		}else {
+			String tipo = (String) request.getParameter("tipo");
+			String descr = (String) request.getParameter("descr");
+			int precio = Integer.parseInt(request.getParameter("precio"));
+			String respuesta = gestor.poneEnVenta(cliente, tipo, descr, precio);
+			request.setAttribute("codcli", cliente);
+			request.setAttribute("venta", respuesta);
+			RequestDispatcher vista = request.getRequestDispatcher("poneEnVenta.jsp");
+			vista.forward(request, response);
+		}
 	}
 
 }

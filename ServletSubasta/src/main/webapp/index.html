@@ -3,14 +3,21 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Servlet de Subastas</title>
-<link rel="stylesheet">
+<link rel="stylesheet" href="subasta.css">
 </head>
 <body>
-<h1>Casa de subastas</h1>
-<a href="index.html"><img src="mazo.jpg"></a>
-<form action="ServletAccede" method="GET">
-	Codigo de cliente: <input type="text" name="codcli" size="8" maxlength="8" required><br>
-	<input type="submit" value="Submit">
-</form>
+<img src="mazo.jpg">
+<h1 class="conColor">Casa de subastas</h1>
+<table>
+	<tr>
+		<td>
+			<form action="ServletAccede" method="GET">
+				Código de cliente: <input type="text" name="codcli" size="20" maxlength="8" required>
+				<br><br>
+				<input class="inputCentrado" type="submit" value="Acceder">
+			</form>
+		</td>
+	</tr>
+</table>
 </body>
 </html>
