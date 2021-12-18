@@ -13,7 +13,7 @@
 <ul>
 	<li><a href="pantallaDeSalida.jsp">Salir</a></li>
 	<li><a href="consultaTipo.html">Consultar articulos de un tipo</a></li>
-	<li><a href="ServletConsultaPujas">Consultar mis pujas</a></li>
+	<li><a href="ServletConsultaPuja">Consultar mis pujas</a></li>
 	<li><a href="poneEnVenta.html">Poner a la venta</a></li>
 	<li><a href="puja.html">Pujar</a></li>
 	<li><a href="venta.html">Vender</a></li>

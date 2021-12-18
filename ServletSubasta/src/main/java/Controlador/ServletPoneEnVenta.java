@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Modelo.GestorSubastas;
 
@@ -35,7 +36,8 @@ public class ServletPoneEnVenta extends HttpServlet {
 		// TODO Auto-generated method stub
 		ServletContext contexto = getServletContext();
 		GestorSubastas gestor = (GestorSubastas) contexto.getAttribute("gestor");
-		String cliente = (String) contexto.getAttribute("codcli");
+		HttpSession sesion = request.getSession();
+		String cliente = (String) sesion.getAttribute("codcli");
 		if(cliente == null) {
 			RequestDispatcher vista = request.getRequestDispatcher("index.html");
 			vista.forward(request, response);

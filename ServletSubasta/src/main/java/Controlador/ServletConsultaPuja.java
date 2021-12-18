@@ -1,7 +1,6 @@
 package Controlador;
 
 import java.io.IOException;
-
 import java.util.Vector;
 
 import javax.servlet.RequestDispatcher;
@@ -12,21 +11,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpSessionContext;
 
 import Modelo.GestorSubastas;
 
 /**
- * Servlet implementation class consultaPuja
+ * Servlet implementation class ServletConsultaPuja
  */
-@WebServlet("/ServletConsultaTipo")
-public class ServletConsultaTipo extends HttpServlet {
+@WebServlet("/ServletConsultaPuja")
+public class ServletConsultaPuja extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletConsultaTipo() {
+    public ServletConsultaPuja() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,31 +36,17 @@ public class ServletConsultaTipo extends HttpServlet {
 		// TODO Auto-generated method stub
 		ServletContext contexto = getServletContext();
 		HttpSession sesion = request.getSession();
+		GestorSubastas gestor = (GestorSubastas) contexto.getAttribute("gestor");
 		String cliente = (String) sesion.getAttribute("codcli");
 		if(cliente == null) {
-			RequestDispatcher vista = request.getRequestDispatcher("index.html");
+			RequestDispatcher vista = request.getRequestDispatcher("hgggggggf");
 			vista.forward(request, response);
 		}else {
-			GestorSubastas gestor = (GestorSubastas) contexto.getAttribute("gestor");
-			String tipo = (String) request.getParameter("tipo");
-			Vector<String> respuesta = gestor.consultaTipo(tipo);
-			switch(tipo) {
-				case("LI"):
-					request.setAttribute("tipo", "Libros y cómics");
-					break;
-				case("EL"):
-					request.setAttribute("tipo", "Electrónica e Informática");
-					break;
-				case("RO"):
-					request.setAttribute("tipo", "Ropa y complementos");
-					break;
-				case("OT"):
-					request.setAttribute("tipo", "Otros");
-					break;
-			}
-			request.setAttribute("articulosDeUnTipo", respuesta);
-			RequestDispatcher vista = request.getRequestDispatcher("consultaTipo.jsp");
-			vista.forward(request, response);
+		Vector<String> respuesta = gestor.consultaPujas(cliente);
+		request.setAttribute("pujas", respuesta);
+		request.setAttribute("codcli", cliente);
+		RequestDispatcher vista = request.getRequestDispatcher("consultaPujas.jsp");
+		vista.forward(request, response);
 		}
 	}
 
