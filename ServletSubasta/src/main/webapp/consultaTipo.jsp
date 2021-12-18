@@ -33,6 +33,7 @@
 		<%} %>
 	</table>
 	<%} %>
+	<br>
 	<a class="menu" href="Menu.jsp">Menú</a>
 </body>
 </html>

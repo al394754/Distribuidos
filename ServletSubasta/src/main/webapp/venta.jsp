@@ -11,7 +11,7 @@
 <h2>Resultado de la venta</h2>
 <% String resultado = (String) request.getAttribute("operacionRealizada");
 	if(resultado == ""){%>
-		<h2>Venta no realizada. Compruebe que el artículo exista y que alguien haya pujado</h2>
+		<h2>Venta no realizada. Compruebe que el artículo exista y que alguien haya pujado. Además, usted debe ser el propietario de dicho artículo</h2>
 	<% }
 	else{
 		String codart = (String) request.getAttribute("codart");

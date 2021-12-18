@@ -11,6 +11,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionContext;
 
 import Modelo.GestorSubastas;
 
@@ -35,7 +37,9 @@ public class ServletConsultaTipo extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		ServletContext contexto = getServletContext();
-		String cliente = (String) contexto.getAttribute("codcli");
+		HttpSession sesion = request.getSession();
+		//String cliente = (String) contexto.getAttribute("codcli");
+		String cliente = (String) sesion.getAttribute("codcli");
 		if(cliente == null) {
 			RequestDispatcher vista = request.getRequestDispatcher("index.html");
 			vista.forward(request, response);

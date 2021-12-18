@@ -33,8 +33,9 @@ form{
 	margin: 0 auto;	
 }
 input.inputCentrado{
-	text-align: center;
-	margin: auto;
+	display: table;
+	margin: 0 auto;
+	
 }
 table{
 	display: table;

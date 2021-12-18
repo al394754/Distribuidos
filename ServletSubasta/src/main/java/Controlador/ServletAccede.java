@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Modelo.GestorSubastas;
 
@@ -35,6 +36,7 @@ public class ServletAccede extends HttpServlet {
 	 */	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		contexto = getServletContext();
+		HttpSession sesion = request.getSession(true);
         gestor = (GestorSubastas) contexto.getAttribute("gestor");
 		if(gestor == null) {
 			gestor = new GestorSubastas();
@@ -42,6 +44,7 @@ public class ServletAccede extends HttpServlet {
 		}
 		response.setContentType("text/html;charset=UTF-8");
 		String codcli = (String) request.getParameter("codcli");
+		sesion.setAttribute("codcli", codcli);
 		contexto.setAttribute("codcli", codcli);
 		request.setAttribute("codcli", codcli);
 		RequestDispatcher vista = request.getRequestDispatcher("Menu.jsp");

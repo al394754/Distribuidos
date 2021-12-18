@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Modelo.GestorSubastas;
 
@@ -36,13 +37,16 @@ public class ServletConsultaPujas extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		ServletContext contexto = getServletContext();
+		HttpSession sesion = request.getSession();
+		String id = sesion.getId();
 		GestorSubastas gestor = (GestorSubastas) contexto.getAttribute("gestor");
-		String cliente = (String) contexto.getAttribute("codcli");
+		String cliente = (String) sesion.getAttribute("codcli" + id);
 		if(cliente == null) {
 			RequestDispatcher vista = request.getRequestDispatcher("index.html");
 			vista.forward(request, response);
 		}else {
 		Vector<String> respuesta = gestor.consultaPujas(cliente);
+		System.out.println(id);
 		request.setAttribute("pujas", respuesta);
 		request.setAttribute("codcli", cliente);
 		RequestDispatcher vista = request.getRequestDispatcher("consultaPujas.jsp");
