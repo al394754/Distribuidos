@@ -8,10 +8,15 @@
 <title>PantallaDeSalida</title>
 </head>
 <body>
-<%	ServletContext contexto = getServletContext();
-	String cliente = (String) contexto.getAttribute("codcli");%>
-	<h1 class="sinColor">Hasta luego <%=cliente %></h1>
-	<h1 class="sinColor">Vuelve pronto a tu casa de subastas favorita</h1>
-	<%contexto.removeAttribute("codcli");%>
+<%	HttpSession sesion = request.getSession();
+	String cliente = (String) sesion.getAttribute("codcli");
+	if(cliente == null) {
+		RequestDispatcher vista = request.getRequestDispatcher("index.html");
+		vista.forward(request, response);
+	}else {%>
+		<h1 class="sinColor">Hasta luego <%=cliente %></h1>
+		<h1 class="sinColor">Vuelve pronto a tu casa de subastas favorita</h1>
+		<%sesion.removeAttribute("codcli");
+	}%>
 </body>
 </html>
